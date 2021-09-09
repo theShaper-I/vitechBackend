@@ -1,6 +1,7 @@
 package com.hrybanov.spring.springboot.spring_vitech.service;
 
-import com.hrybanov.spring.springboot.spring_vitech.dao.PatientRepository;
+import com.hrybanov.spring.springboot.spring_vitech.repository.CommentsRepository;
+import com.hrybanov.spring.springboot.spring_vitech.repository.PatientRepository;
 import com.hrybanov.spring.springboot.spring_vitech.entities.Comment;
 import com.hrybanov.spring.springboot.spring_vitech.entities.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,12 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
+    @Autowired
+    private CommentsRepository commentsRepository;
+
     @Override
     public List<Patient> getAllPatients() {
+
         return patientRepository.findAll();
     }
 
@@ -27,8 +32,9 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void savePatient(Patient patient) {
-        patientRepository.save(patient);
+    public void setPatientComment(String text, String data, Long id) {
+
+        commentsRepository.setPatientComment(text, data, id);
     }
 
     @Override
@@ -42,7 +48,14 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public void savePatient(Patient patient) {
+
+        patientRepository.save(patient);
+    }
+
+    @Override
     public void deletePatient(int id) {
+
         patientRepository.deleteById(id);
     }
 

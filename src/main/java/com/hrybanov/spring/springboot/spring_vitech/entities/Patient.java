@@ -23,7 +23,7 @@ public class Patient {
     private String birth;
 
     @Column(name = "age")
-    private int age;
+    private String age;
 
     @Column(name = "gender")
     private String gender;
@@ -43,7 +43,19 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String firstname, String lastname, String birth, int age, String gender, String country, String state, String city) {
+    public Patient(String firstname, String lastname, String birth, String age, String gender, String country, String state, String city) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birth = birth;
+        this.age = age;
+        this.gender = gender;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+    }
+
+    public Patient(int id, String firstname, String lastname, String birth, String age, String gender, String country, String state, String city) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.birth = birth;
@@ -86,11 +98,11 @@ public class Patient {
         this.birth = birth;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -132,20 +144,5 @@ public class Patient {
 
     public void setCommentsList(List<Comment> commentsList) {
         this.commentsList = commentsList;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", birth='" + birth + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", country='" + country + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                '}';
     }
 }

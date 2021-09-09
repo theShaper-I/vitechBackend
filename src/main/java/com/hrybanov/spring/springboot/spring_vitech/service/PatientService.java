@@ -15,4 +15,6 @@ public interface PatientService {
     void deletePatient(int id);
 
     List<Comment> getPatientComments(int id);
+
+    void setPatientComment(String text, String data, Long id);
 }

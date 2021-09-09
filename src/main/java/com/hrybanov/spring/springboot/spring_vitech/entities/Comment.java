@@ -24,9 +24,10 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String commentText, String data) {
+    public Comment(String commentText, String data, Patient patient) {
         this.commentText = commentText;
         this.data = data;
+        this.patient = patient;
     }
 
     public int getId() {
@@ -51,22 +52,5 @@ public class Comment {
 
     public void setData(String data) {
         this.data = data;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    @Override
-    public String toString() {
-        return "Comments{" +
-                "id=" + id +
-                ", commentText='" + commentText + '\'' +
-                ", data='" + data + '\'' +
-                '}';
     }
 }

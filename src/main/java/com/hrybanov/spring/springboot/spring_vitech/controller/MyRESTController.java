@@ -1,5 +1,6 @@
 package com.hrybanov.spring.springboot.spring_vitech.controller;
 
+import com.hrybanov.spring.springboot.spring_vitech.repository.CommentsRepository;
 import com.hrybanov.spring.springboot.spring_vitech.entities.Comment;
 import com.hrybanov.spring.springboot.spring_vitech.entities.Patient;
 import com.hrybanov.spring.springboot.spring_vitech.service.PatientService;
@@ -23,7 +24,7 @@ public class MyRESTController {
     }
 
     @GetMapping("/patients/{id}")
-    public Patient getPatient(@PathVariable int id) {
+    public Patient getPatientById(@PathVariable int id) {
         Patient patient = patientService.getPatient(id);
 
         return patient;
@@ -54,6 +55,12 @@ public class MyRESTController {
     public List<Comment> getPatientComments(@PathVariable int id) {
 
         return patientService.getPatientComments(id);
+    }
+
+    @GetMapping("/patients/comments/{id}/{text}/{data}")
+    public void setPatientComment(@PathVariable Long id, @PathVariable String text, @PathVariable String data) {
+
+        patientService.setPatientComment(text, data, id);
     }
 
 }
