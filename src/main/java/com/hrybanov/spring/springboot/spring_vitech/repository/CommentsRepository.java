@@ -13,6 +13,6 @@ public interface CommentsRepository extends JpaRepository<Comment, Integer> {
     @CrossOrigin(origins = "http://localhost:3000")
     @Modifying
     @Transactional
-    @Query(value = "insert into my_db.comments (text, data, patient_id) VALUES (:text, :data, :id)", nativeQuery = true)
+    @Query(value = "insert into comments (text, data, patient_id) VALUES (:text, :data, :id)", nativeQuery = true)
     void setPatientComment(@Param("text") String text, @Param("data") String data, @Param("id") Long id);
 }
