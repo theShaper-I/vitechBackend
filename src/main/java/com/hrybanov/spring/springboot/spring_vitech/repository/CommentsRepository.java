@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 public interface CommentsRepository extends JpaRepository<Comment, Integer> {
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://vitechfrontend.herokuapp.com")
     @Modifying
     @Transactional
     @Query(value = "insert into comments (text, data, patient_id) VALUES (:text, :data, :id)", nativeQuery = true)
